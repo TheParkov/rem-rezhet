@@ -30,6 +30,8 @@ window.RRtg = function () {
   function call(f) { try { f(); } catch (e) {} }
   call(function () { t.ready(); });
   call(function () { t.expand(); });
+  // на телефоне — на весь экран, без шапки Telegram (на компьютере развернуло бы на весь монитор)
+  if (/^(ios|android)/.test(t.platform)) call(function () { if (t.isVersionAtLeast("8.0")) t.requestFullscreen(); });
   call(function () { t.disableVerticalSwipes(); });
   call(function () { t.setHeaderColor("#0d0b10"); });
   call(function () { t.setBackgroundColor("#0d0b10"); });
